@@ -13,7 +13,9 @@
         android:layout_marginStart="161dp"
         android:layout_marginTop="285dp"
         android:layout_marginEnd="162dp"
+        android:layout_marginBottom="93dp"
         android:text="Войти"
+        app:layout_constraintBottom_toTopOf="@+id/registration"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,10 +25,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="132dp"
+        android:layout_marginTop="93dp"
         android:layout_marginEnd="133dp"
         android:layout_marginBottom="257dp"
         android:text="Регистрация"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login" />
 </androidx.constraintlayout.widget.ConstraintLayout>

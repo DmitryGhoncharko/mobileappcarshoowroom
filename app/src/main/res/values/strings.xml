@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="invalid_login_message">Неверный логин или пароль</string>
+    <string name="todo">TODO</string>
 </resources>
