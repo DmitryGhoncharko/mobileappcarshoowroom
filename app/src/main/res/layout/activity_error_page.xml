@@ -21,8 +21,8 @@
         android:id="@+id/buttonlogpage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="298dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="96dp"
         android:text="На страницу логина"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />

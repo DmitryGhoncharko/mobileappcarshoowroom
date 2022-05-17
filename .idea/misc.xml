@@ -4,12 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/adnroidProjects/mobileappcarshoowroom/app/src/main/res/layout/activity_cars.xml" value="0.33" />
-        <entry key="..\:/adnroidProjects/mobileappcarshoowroom/app/src/main/res/layout/activity_error_page.xml" value="0.3125" />
+        <entry key="..\:/adnroidProjects/mobileappcarshoowroom/app/src/main/res/layout/activity_cars2.xml" value="0.3009833262077811" />
+        <entry key="..\:/adnroidProjects/mobileappcarshoowroom/app/src/main/res/layout/activity_error_page.xml" value="0.33" />
+        <entry key="..\:/adnroidProjects/mobileappcarshoowroom/app/src/main/res/layout/activity_favorites.xml" value="0.3009833262077811" />
         <entry key="..\:/adnroidProjects/mobileappcarshoowroom/app/src/main/res/layout/activity_invalid_login_or_password.xml" value="0.3125" />
-        <entry key="..\:/adnroidProjects/mobileappcarshoowroom/app/src/main/res/layout/activity_login.xml" value="0.18802083333333333" />
+        <entry key="..\:/adnroidProjects/mobileappcarshoowroom/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/adnroidProjects/mobileappcarshoowroom/app/src/main/res/layout/activity_main.xml" value="0.3009833262077811" />
         <entry key="..\:/adnroidProjects/mobileappcarshoowroom/app/src/main/res/layout/activity_registration.xml" value="0.3009833262077811" />
         <entry key="..\:/adnroidProjects/mobileappcarshoowroom/app/src/main/res/layout/activity_selected.xml" value="0.3009833262077811" />
+        <entry key="..\:/adnroidProjects/mobileappcarshoowroom/app/src/main/res/layout/activity_test.xml" value="0.3009833262077811" />
       </map>
     </option>
   </component>

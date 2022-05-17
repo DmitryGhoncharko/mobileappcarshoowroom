@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 
 import com.example.myapplication.connection.UserDBHelper;
+import com.example.myapplication.utils.InMemoryUserIdCache;
 import com.example.myapplication.utils.NetworkTester;
 
 import java.io.BufferedReader;
@@ -32,7 +33,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText login;
     private EditText password;
     private Button loginButton;
-    private Button restorePassButton;
     private UserDBHelper userDBHelper;
     private HttpURLConnection conn;
     private boolean hasInternetConnection;
@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         login = findViewById(R.id.loginValue);
         password = findViewById(R.id.passwordValue);
         loginButton = findViewById(R.id.laginInApp);
-        restorePassButton = findViewById(R.id.restorePass);
+
         userDBHelper = new UserDBHelper(this);
         hasInternetConnection = NetworkTester.isNetworkAvailable(this);
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -77,13 +77,12 @@ public class LoginActivity extends AppCompatActivity {
                                 conn.setDoInput(true);
                                 conn.getOutputStream().write(postDataBytes);
                                 if (HttpURLConnection.HTTP_ACCEPTED == conn.getResponseCode()) {
-                                    System.out.println("NICE");
                                     Reader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
                                     StringBuilder userId = new StringBuilder();
                                     for (int c; (c = in.read()) >= 0; ) {
                                         userId.append((char) c);
                                     }
-
+                                    InMemoryUserIdCache.userId = Integer.parseInt(userId.toString());
                                     SQLiteDatabase sqLiteDatabase = userDBHelper.getWritableDatabase();
                                     ContentValues contentValues = new ContentValues();
                                     contentValues.put(UserDBHelper.COLUMN_ID_NAME, Integer.valueOf(userId.toString()));
@@ -93,7 +92,9 @@ public class LoginActivity extends AppCompatActivity {
                                     startActivity(new Intent(LoginActivity.this, CarsActivity.class));
                                     return;
                                 } else {
-                                    startActivity(new Intent(LoginActivity.this,ErrorPageActivity.class));
+                                    Toast toast = Toast.makeText(getApplicationContext(),
+                                            "Неверный логин или пароль", Toast.LENGTH_SHORT);
+                                    toast.show();
                                     return;
                                 }
                             } else {
@@ -109,6 +110,7 @@ public class LoginActivity extends AppCompatActivity {
                                         String userLoginFromTextField = login.getText().toString();
                                         String userPasswordFromTextField = password.getText().toString();
                                         if (userLogin.equals(userLoginFromTextField) && userPassword.equals(userPasswordFromTextField)) {
+                                            InMemoryUserIdCache.userId = userId;
                                             cursor.close();
                                             startActivity(new Intent(LoginActivity.this, CarsActivity.class));
                                             return;
@@ -116,7 +118,9 @@ public class LoginActivity extends AppCompatActivity {
                                     } while (cursor.moveToNext());
                                 }
                                 cursor.close();
-                                startActivity(new Intent(LoginActivity.this,ErrorPageActivity.class));
+                                Toast toast = Toast.makeText(getApplicationContext(),
+                                        "Неверный логин или пароль", Toast.LENGTH_SHORT);
+                                toast.show();
                             }
                         }catch (Exception e){
                             System.out.println(e);

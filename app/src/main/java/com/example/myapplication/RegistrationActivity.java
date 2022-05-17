@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.myapplication.connection.UserDBHelper;
 import com.example.myapplication.exception.ServiceError;
+import com.example.myapplication.utils.InMemoryUserIdCache;
 import com.example.myapplication.utils.NetworkTester;
 
 import java.io.BufferedReader;
@@ -77,7 +78,6 @@ public class RegistrationActivity extends AppCompatActivity {
                                    for (int c; (c = in.read()) >= 0; ) {
                                        userId.append((char) c);
                                    }
-
                                    SQLiteDatabase sqLiteDatabase = userDBHelper.getWritableDatabase();
                                    ContentValues contentValues = new ContentValues();
                                    contentValues.put(UserDBHelper.COLUMN_ID_NAME, Integer.valueOf(userId.toString()));
@@ -87,14 +87,18 @@ public class RegistrationActivity extends AppCompatActivity {
                                    startActivity(new Intent(RegistrationActivity.this, CarsActivity.class));
                                    return;
                                } else {
-                                   startActivity(new Intent(RegistrationActivity.this,ErrorPageActivity.class));
+                                   Toast toast = Toast.makeText(getApplicationContext(),
+                                           "Неверный логин или пароль", Toast.LENGTH_SHORT);
+                                   toast.show();
                                    return;
                                }
                            }catch (Exception e){
 
                            }
                        }else {
-                            startActivity(new Intent(RegistrationActivity.this,ErrorPageActivity.class));
+                           Toast toast = Toast.makeText(getApplicationContext(),
+                                   "Неверный логин или пароль", Toast.LENGTH_SHORT);
+                           toast.show();
                        }
                    }
                }).start();
